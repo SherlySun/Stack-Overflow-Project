@@ -7,7 +7,14 @@
 
 ## Implemented Features
 
-* (=^・・^=) 
+* User Features
+** user_age
+** user_badge
+* Post Features
+** comment_cnt
+
+
+
 
 ## Instructions
 
