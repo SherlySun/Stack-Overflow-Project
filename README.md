@@ -24,6 +24,14 @@ cd src/preprocess
 ./preprocess.py [name of dataset]
 ```
 
+### Example of Feature Extraction
+**Extract user_age features**
+```bash
+cd src/feature_extraction
+./user_age.py
+```
+
+
 ## Directory Descriptions
 
 Here some descriptions briefly show the purpose of each directory.
