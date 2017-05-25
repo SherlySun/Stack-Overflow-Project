@@ -4,7 +4,7 @@ If you are working in *qilin*, you are strongly recommended to create a symbolic
 
 ## Example
 
-```{r, engine='bash', count_lines}
+```bash
 ln -s /home/jyunyu/17s_cs249/raw/stackoverflow
 ```
 
