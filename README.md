@@ -1,15 +1,15 @@
-# UCLA 17S CS 249 Final Project  #
+# UCLA 17S CS 249 Final Project 
 
-## Overall Framework ## 
+## Overall Framework 
 
 1. Feature Extraction
 2. Learning-to-Rank
 
-## Implemented Features ##
+## Implemented Features
 
 * (=^・・^=) 
 
-## Directory Descriptions ##
+## Directory Descriptions
 
 Here some descriptions briefly show the purpose of each directory.
 
@@ -20,5 +20,3 @@ Here some descriptions briefly show the purpose of each directory.
     * __data/[name of dataset]/__: the corresponding preprocessed data for a certain dataset (e.g., *StackOverflow*)
 * __src/__: The directory for all source codes
     * __src/preprocess/__: Codes for preprocessing raw data
-
-
