@@ -9,6 +9,14 @@
 
 * (=^・・^=) 
 
+## Instructions
+
+### Preprocessing
+```bash
+cd src/preprocess
+./preprocess.py [name of dataset]
+```
+
 ## Directory Descriptions
 
 Here some descriptions briefly show the purpose of each directory.
