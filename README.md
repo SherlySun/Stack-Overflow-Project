@@ -8,10 +8,10 @@
 ## Implemented Features
 
 * User Features
-** user_age
-** user_badge
+  * user_age
+  * user_badge
 * Post Features
-** comment_cnt
+  * comment_cnt
 
 
 
