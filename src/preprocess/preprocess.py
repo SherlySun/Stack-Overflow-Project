@@ -4,7 +4,6 @@ import sys, os
 import re
 from lxml import etree
 #from xml.etree import cElementTree
-from html2text import html2text
 from html.parser import HTMLParser
 from bs4 import BeautifulSoup
 
