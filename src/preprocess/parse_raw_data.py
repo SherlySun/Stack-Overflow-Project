@@ -6,6 +6,10 @@ from lxml import etree
 #from xml.etree import cElementTree
 from html2text import html2text
 from html.parser import HTMLParser
+from bs4 import BeautifulSoup
+
+# lxml.html.document_fromstring(html_string)
+
 try:
     import ujson as json
 except:
@@ -18,7 +22,8 @@ def preprocess_posts(PATH_RAW, PATH_DATA):
          open(PATH_DATA + 'posts_answer.json', 'w') as fout_a:
         for event, elem in parser:
             attr = dict(elem.attrib)
-            attr['Body'] = html2text(html_parser.unescape(attr['Body']))
+            #attr['Body'] = html_parser.unescape(attr['Body'])
+            attr['Body'] = BeautifulSoup(attr['Body'], 'lxml').get_text()
             print(json.dumps(attr), file=fout_q if attr['PostTypeId'] == '1' else fout_a)
             elem.clear()
             while elem.getprevious() is not None:
