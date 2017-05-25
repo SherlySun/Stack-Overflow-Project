@@ -13,9 +13,6 @@
 * Post Features
     * comment_cnt [1 numerical feature]
 
-
-
-
 ## Instructions
 
 ### Preprocessing
@@ -23,6 +20,15 @@
 cd src/preprocess
 ./preprocess.py [name of dataset]
 ```
+
+* Convert the format from XML to JSON
+* Convert HTML-like contents into plaintext
+* Link each question to the corresponding answers
+    * See _data/[name of dataset]/question_answer_mapping.json_ after preprocessing
+* Split the whole set into training and testing sets
+    * See _data/[name of dataset]/train.*_ and  _data/[name of dataset]/test.*_
+    * Questions without the best answer (ground truth) and with less than two answers are removed 
+
 
 ### Example of Feature Extraction
 **Extract user_age features**
