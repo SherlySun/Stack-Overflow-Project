@@ -34,7 +34,7 @@ cd src/preprocess
 **Extract user_age features**
 ```bash
 cd src/feature_extraction
-./user_age.py
+./user_age.py [name of dataset]
 ```
 
 
