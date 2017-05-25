@@ -9,7 +9,6 @@ from html.parser import HTMLParser
 from bs4 import BeautifulSoup
 import nltk
 
-
 # lxml.html.document_fromstring(html_string)
 
 try:
@@ -17,10 +16,8 @@ try:
 except:
     import json
 
-
 def clean_html(x):
     return BeautifulSoup(x, 'lxml').get_text()
-
 
 def preprocess_general(PATH_RAW, PATH_DATA, raw_file, output_file):
     html_parser = HTMLParser()
@@ -41,7 +38,11 @@ def preprocess_posts(PATH_RAW, PATH_DATA):
         for event, elem in parser:
             attr = dict(elem.attrib)
             attr['Body'] = clean_html(attr['Body'])
-            print(json.dumps(attr), file=fout_q if attr['PostTypeId'] == '1' else fout_a)
+            if attr['PostTypeId'] == '1':
+                print(json.dumps(attr), file=fout_q)
+            elif attr['PostTypeId'] == '2':
+                print(json.dumps(attr), file=fout_a)
+
             elem.clear()
             while elem.getprevious() is not None:
                 del elem.getparent()[0]
@@ -57,9 +58,6 @@ def preprocess_comments(PATH_RAW, PATH_DATA):
             elem.clear()
             while elem.getprevious() is not None:
                 del elem.getparent()[0]
-
-
-
 
 
 if __name__ == '__main__':
