@@ -65,14 +65,22 @@ def parse_raw_data(PATH_RAW, PATH_DATA):
     if not os.path.isdir(PATH_DATA):
         os.makedirs(PATH_DATA)
 
-    # start preprocessing 
+    # start preprocessing
+    print('preprocess posts')
     preprocess_posts(PATH_RAW, PATH_DATA)
+    print('preprocess comments')
     preprocess_comments(PATH_RAW, PATH_DATA)
+    print('preprocess badges')
     preprocess_general(PATH_RAW, PATH_DATA, 'Badges.xml', 'badges.json')
+    print('preprocess postlinks')
     preprocess_general(PATH_RAW, PATH_DATA, 'PostLinks.xml', 'postlinks.json')
+    print('preprocess tags')
     preprocess_general(PATH_RAW, PATH_DATA, 'Tags.xml', 'tags.json')
+    print('preprocess users')
     preprocess_general(PATH_RAW, PATH_DATA, 'Users.xml', 'users.json')
+    print('preprocess votes')
     preprocess_general(PATH_RAW, PATH_DATA, 'Votes.xml', 'votes.json')
+    print('preprocess posthistory')
     preprocess_general(PATH_RAW, PATH_DATA, 'PostHistory.xml', 'posthistory.json')
 
 def link_questions_answers(PATH_DATA):

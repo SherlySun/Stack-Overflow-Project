@@ -10,6 +10,11 @@
 * User Features
     * user_age [1 numerical features]
     * user_badge [categorical features]
+    * user_reputation [1 numerical features]
+    * user_views [1 numerical features]
+    * user_votes [1 numerical features]
+* User-User Features
+    * user-user interactions [1 numerical features]
 * Post Features
     * comment_cnt [1 numerical feature]
 
