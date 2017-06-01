@@ -1,3 +1,4 @@
+#!/bin/bash
 ./comment_cnt.py $1
 ./user_age.py $1
 ./user_badge.py $1
