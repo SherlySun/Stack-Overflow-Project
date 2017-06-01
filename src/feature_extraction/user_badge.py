@@ -85,7 +85,7 @@ if __name__ == '__main__':
             except:
                 pass            
 
-            fea['len'] = num_badge * 2
+            q_fea['len'] = num_badge * 2
             for aid in data['AnswerList']:
                 fea = q_fea 
                 try:
