@@ -18,7 +18,7 @@ if __name__ == '__main__':
     PATH_DATA = '../../data/%s/' % dataset
     PATH_FEATURE = '../../features/%s/' % dataset
     
-    feature_list = [ x.strip() for x in open(config, 'r').readlines() ]
+    feature_list = [ x.strip() for x in open(config, 'r').readlines() if x.strip()[0] != '#' ]
 
 
     for task in ['train', 'test']:
@@ -28,12 +28,12 @@ if __name__ == '__main__':
              open(PATH_FEATURE + '%s.libsvm' % task, 'w') as fout:
             for line in fin:
                 data = json.loads(line)
-                fid = 1
                 qid += 1
                 ans = data['AcceptedAnswerId']
                 for aid in data['AnswerList']:
                     fout.write('1' if aid == ans else '0')
                     fout.write(' qid:%d' % qid)
+                    fid = 1
                     for f in fin_list:
                         v = json.loads(f.readline())
                         if type(v) == int:
@@ -49,7 +49,7 @@ if __name__ == '__main__':
                         elif type(v) == dict:
                             for val in v.keys():
                                 if val != 'len':
-                                    fout.write(' %d:%d' % (int(val), v[val]))
+                                    fout.write(' %d:%d' % (fid + int(val), v[val]))
                             try:
                                 fid += v['len']
                             except:
