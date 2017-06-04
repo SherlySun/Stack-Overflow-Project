@@ -54,4 +54,4 @@ Here some descriptions briefly show the purpose of each directory.
     * __data/[name of dataset]/__: the corresponding preprocessed data for a certain dataset (e.g., *StackOverflow*)
 * __src/__: The directory for all source codes
     * __src/preprocess/__: Codes for preprocessing raw data
-* __src/__: The directory for some trained model on large English corpus
+* __model/__: The directory for some trained model on large English corpus
