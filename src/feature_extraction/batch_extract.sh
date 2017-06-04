@@ -6,3 +6,4 @@
 ./user_user_interactions.py $1
 ./user_views.py $1 
 ./user_votes.py $1
+./user_expertise.py $1

@@ -1,7 +1,8 @@
 comment_cnt
 user_age
-#user_badge
+user_badge
 user_reputation
 user_user_interactions
 user_views
 user_votes
+user_expertise

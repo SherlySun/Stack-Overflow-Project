@@ -38,14 +38,17 @@ if __name__ == '__main__':
             data = json.loads(line)
             qid = data['QuestionId']
             q_user = post_owner[qid]
-            best_user = post_owner[data['AcceptedAnswerId']]
-            # best answerer is better than the questioner
-            list_comp.append((best_user, q_user))
+            try:
+                best_user = post_owner[data['AcceptedAnswerId']]
+                # best answerer is better than the questioner
+                list_comp.append((best_user, q_user))
 
-            for aid in data['AnswerList']:
-                if aid != best_user: 
-                    # best answerer is better than other answerers 
-                    list_comp.append((best_user, aid))
+                for aid in data['AnswerList']:
+                    if aid != best_user: 
+                        # best answerer is better than other answerers 
+                        list_comp.append((best_user, aid))
+            except:
+                pass
 
     # random shuffle and conduct competitions
     random.shuffle(list_comp)
