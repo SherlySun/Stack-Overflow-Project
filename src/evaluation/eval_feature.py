@@ -15,6 +15,8 @@ if __name__ == '__main__':
     # load 
     dataset = sys.argv[1]
     method = sys.argv[2]
+    if len(sys.argv) >= 1 + 3:
+        idx = int(sys.argv[3])
     PATH_DATA = '../../data/%s/' % dataset
     PATH_FEATURES = '../../features/%s/' % dataset
     
@@ -33,8 +35,8 @@ if __name__ == '__main__':
                 v = json.loads(fres.readline())
                 if type(v) == int or type(v) == float:
                     f = v
-                elif type(v) == list and len(v) == 2:
-                    f = v[1]
+                elif type(v) == list:
+                    f = v[idx]
                 else:
                     print('Do not support %s features' % str(type(v)), file=sys.stderr)
                     sys.exit(0)
