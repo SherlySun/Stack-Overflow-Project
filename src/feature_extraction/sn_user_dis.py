@@ -62,7 +62,7 @@ if __name__ == "__main__":
     dis_st_frm = {}
     for target in ['train', 'test']:
         with open(PATH_DATA + target + ".question_answer_mapping.json", "r") as fin:
-            with open(PATH_FEATURE + "qu_au_dis." + target., "w") as fout:
+            with open(PATH_FEATURE + "qu_au_dis." + target, "w") as fout:
                 for line in fin:
                     data = json.loads(line)
                     try:
