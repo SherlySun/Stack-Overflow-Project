@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     # Output the user_pair to 1 files
     #     users_common_question_count.json
-    with open(PATH_FEATURE + "user_connection.txt", "w") as fout_count:
+    with open(PATH_DATA + "user_connection.txt", "w") as fout_count:
         for u_pair, q_list in user_pair.items():
             q_list = list(q_list)
             user_1_id, user_2_id = int(u_pair[0]), int(u_pair[1])
