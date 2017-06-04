@@ -36,6 +36,8 @@ if __name__ == "__main__":
             weight = 1 / float(line_split[2].strip())
             G.add_edge(uid1, uid2, weight=weight)
     
+    ndset = set(nx.nodes(G))
+
     # Load Question-User pair and Answer-User pair
     qu = {}
     au = {}
@@ -57,25 +59,37 @@ if __name__ == "__main__":
                      pass
 
     # Load Question-Answer Mapping
+    dis_st_frm = {}
     for target in ['train', 'test']:
         with open(PATH_DATA + target + ".question_answer_mapping.json", "r") as fin:
             with open(PATH_FEATURE + target + ".qu_au_dis.json", "w") as fout:
+                cc = 0
                 for line in fin:
+                    cc += 1
+                    if cc % 1000 == 0:
+                        print(cc)
                     data = json.loads(line)
                     try:
-                        q_uid = qu[data['QuestionId']]
+                        q_uid = int(qu[data['QuestionId']])
                     except:
                         # Some post may lack OwnerUserId, if cannot find uid from a post, then set q_uid to -1.
                         q_uid = -1
+                    try:
+                        if q_uid != -1 and q_uid not in dis_st_frm:
+                            dis_st_frm[q_uid] = nx.single_source_dijkstra_path_length(G, q_uid)
+                    except:
+                        pass
+
                     for aid in data['AnswerList']:
                         try:
-                            a_uid = au[aid]
+                            a_uid = int(au[aid])
                         except:
                             # Some post may lack OwnerUserId, if cannot find uid from a post, then set a_uid to -1.
                             a_uid = -1
                         
                         try:
-                            dij_dis = nx.dijkstra_path_length(G, source=int(q_uid), target=int(a_uid))
+                            # dij_dis = nx.dijkstra_path_length(G, source=int(q_uid), target=int(a_uid))
+                            dij_dis = dis_st_frm[q_uid][a_uid]
                         except:
                             dij_dis = 100000
                         print(json.dumps([dij_dis]), file=fout)
