@@ -1,5 +1,6 @@
-# calculate the sentenc level nlp features : 
-# sentence_cnt & sentence_avg_len
+#!/usr/bin/env python3
+
+
 import sys, os
 try:
     import ujson as json
@@ -23,12 +24,12 @@ if __name__ == '__main__':
     sentence_count = {}
     avg_sentence_length = {}
 
-    with open(PATH_DATA + 'posts_answer.json' 'r') as fin:
+    with open(PATH_DATA + 'posts_answer.json','r') as fin:
         for line in fin:
             data = json.loads(line)
-            body_split = data['Body'].split('.').split('!').split('?') if 'Body' in data else []
+            body_split = data['Body'].split('.') if 'Body' in data else []
             sentence_count[data['Id']] = len(body_split) 
-            avg_sentence_length = sum(len(x.split(' ')) for x in body_split) / float(len(body_split)) if len(body_split) != 0 else 0
+            avg_sentence_length[data['Id']] = sum(len(x.split(' ')) for x in body_split) / float(len(body_split)) if len(body_split) != 0 else 0
 
     # dump training features
     with open(PATH_DATA + 'train.question_answer_mapping.json', 'r') as fin, \
