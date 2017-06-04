@@ -63,11 +63,7 @@ if __name__ == "__main__":
     for target in ['train', 'test']:
         with open(PATH_DATA + target + ".question_answer_mapping.json", "r") as fin:
             with open(PATH_FEATURE + target + ".qu_au_dis.json", "w") as fout:
-                cc = 0
                 for line in fin:
-                    cc += 1
-                    if cc % 1000 == 0:
-                        print(cc)
                     data = json.loads(line)
                     try:
                         q_uid = int(qu[data['QuestionId']])
