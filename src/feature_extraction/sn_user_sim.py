@@ -79,7 +79,7 @@ if __name__ == '__main__':
                         au_emb = avg_emb
                     # For single sample vectors, reshape it using X.reshape(1,-1)
                     cos_sim = cosine_similarity(qu_emb.reshape(1,-1), au_emb.reshape(1,-1))
-                    print(json.dumps([list(qu_emb), list(au_emb)]), file=fout_emb)
+                    print(json.dumps(list(qu_emb) + list(au_emb)), file=fout_emb)
                     print(json.dumps([float(cos_sim)]), file=fout_sim)
 
 
