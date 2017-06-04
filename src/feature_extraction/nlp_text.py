@@ -36,7 +36,7 @@ if __name__ == '__main__':
 		for line in fin:
 			data = json.loads(line)
 			body = data['Body'].lower().split()
-			temp_body = [w for w in body if word not in stoplist]
+			temp_body = [word for word in body if word not in stoplist]
 			word_list_query[data['Id']] = temp_body[:200]
 
 
@@ -66,6 +66,29 @@ if __name__ == '__main__':
          			total_dis += model.wmdistance(sentence_aid,other_sentence_aid)
 
          		print(json.dumps(total_dis/float(len(data['AnswerList']))), file = fout2)
+
+
+
+    with open(PATH_DATA + 'test.question_answer_mapping.json', 'r') as fin, \
+         open(PATH_FEATURE + 'word2vec_q_a_sim.test', 'w') as fout1, \
+         open(PATH_FEATURE + 'word2vec_a_a_sim.test', 'w') as fout2:
+
+         for line in fin:
+         	data = json.loads(line)
+         	for aid in data['AnswerList']:
+         		qid = data['QuestionId']
+         		sentence_aid = word_list_answer[aid]
+         		sentence_qid = word_list_query[qid]
+         		print(json.dumps(model.wmdistance(sentence_aid,sentence_qid)), file=fout1)
+
+         		total_dis = 0.0
+         		for other_aid in data['AnswerList']:
+         			other_sentence_aid = word_list_answer[aid]
+         			total_dis += model.wmdistance(sentence_aid,other_sentence_aid)
+
+         		print(json.dumps(total_dis/float(len(data['AnswerList']))), file = fout2)
+
+
 
 
 
