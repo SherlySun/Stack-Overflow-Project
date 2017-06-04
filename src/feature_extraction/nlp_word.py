@@ -29,10 +29,11 @@ if __name__ == '__main__':
 	qid_ori = []
 	with open(PATH_DATA + 'posts_question.json','r') as fin:
 		for line in fin:
-    			data = json.loads(line)
-    			corpus_ori.append(data['Body'])
-    			qid_ori.append(data['Id'])
-	stoplist = set('for a of the and to in'.split())
+    		data = json.loads(line)
+    		corpus_ori.append(data['Body'])
+    		qid_ori.append(data['Id'])
+
+	stoplist = nltk.corpus.stopwords.words('english')
 	corpus = [[word for word in doc.lower().split(' ') if word not in stoplist] for doc in corpus_ori]
 	frequency = defaultdict(int)
 
@@ -40,7 +41,7 @@ if __name__ == '__main__':
 		for token in doc:
 			frequency[token] += 1
 
-	corpus = [[token for token in doc if frequency[token] > 0] for doc in corpus]
+	corpus = [[token for token in doc if frequency[token] > 10] for doc in corpus]
 	dictionary = corpora.Dictionary(corpus)
 	corpus = [dictionary.doc2bow(doc) for doc in corpus]
 	tfidf = models.TfidfModel(corpus)
