@@ -22,6 +22,7 @@ if __name__ == '__main__':
     if not os.path.exists(PATH_RESULTS):
         os.makedirs(PATH_RESULTS)
 
+    '''                
     # load post user mapping
     uset = set()
     post_owner = {}
@@ -52,9 +53,11 @@ if __name__ == '__main__':
                     except:
                         a_user = 0
                     print('%d %d' % (q_user, a_user), file=fout)
-                
+
     num_user = len(ulist)
-    os.system('./bprmf/bprmf -U %s -I %s %s.train %s.test %s.model' % (num_user, num_user, dataset, dataset, dataset))
+    '''                
+    num_user = 3207438
+    os.system('./bprmf/bprmf -U %s -I %s -S 1 %s.train %s.test %s.model' % (num_user, num_user, dataset, dataset, dataset))
     os.system('./bprmf/bprmf-predict %s.train %s.model %s.test %s/pred.bprmf' % (dataset, dataset, dataset, PATH_RESULTS))
     
     
