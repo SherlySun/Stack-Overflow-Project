@@ -109,5 +109,5 @@ if __name__ == '__main__':
          		print(json.dumps(stopWordCount[aid]), file=fout1)
          		print(json.dumps(wordCount[aid]),file = fout2)
          		print(json.dumps(tfidf_question[qid],tfidf_answer[aid]),file = fout3)
-         		print(json.dumps(wordCount[aid]),file = fout4)
+         		print(json.dumps(tfidf_sum[aid]),file = fout4)
          		
