@@ -18,4 +18,9 @@
 echo "Calculating user distances. Unconnected user distance are assigned to 10000"
 ./sn_user_dis.py $1
 
+
+echo "Calculating nlp sentence features..."
 python3 nlp_sentence.py $1
+echo "Calculating nlp word features...."
+python3 nlp_word.py $1
+
